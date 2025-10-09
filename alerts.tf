@@ -1,7 +1,3 @@
-# Subscription scope (delete this block if you already defined it elsewhere)
-
-
-# Email action group (regional; no 'location' field required)
 resource "azurerm_monitor_action_group" "ops_email" {
   name                = "${var.prefix}-ag-ops"
   resource_group_name = azurerm_resource_group.platform.name
@@ -16,7 +12,6 @@ resource "azurerm_monitor_action_group" "ops_email" {
   tags = { env = "lab" }
 }
 
-# ---- Activity Log Alerts MUST be 'global' ----
 
 resource "azurerm_monitor_activity_log_alert" "pip_created" {
   name                = "${var.prefix}-al-pip-write"
