@@ -66,7 +66,7 @@ echo "https://$FQDN"
 ---
 
 ### Quick sanity tips
-- In **Bash**, set `PREFIX=jmig01` (don’t type `${var.prefix}`—that’s Terraform syntax, not shell).  
+- In **Bash**, set `PREFIX=jmig01` (don’t type `${var.prefix}` that’s Terraform syntax, not shell).  
 - If you see “provider not registered: Microsoft.App”, run:
 ```bash
 
