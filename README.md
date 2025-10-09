@@ -41,7 +41,8 @@ screenshots/
 
 ## Run the demo
 
-### Option A — Azure Cloud Shell (recommended)
+### BASH
+
 ```bash
 git clone https://github.com/<your-username>/<your-azure-repo>.git
 cd <your-azure-repo>/infra
@@ -59,4 +60,15 @@ terraform apply -auto-approve
 PREFIX=jmig01
 FQDN=$(az containerapp show -g ${PREFIX}-rg-workload -n ${PREFIX}-ca-legacy-api --query properties.configuration.ingress.fqdn -o tsv)
 echo "https://$FQDN"
+```
 
+
+---
+
+### Quick sanity tips
+- In **Bash**, set `PREFIX=jmig01` (don’t type `${var.prefix}`—that’s Terraform syntax, not shell).  
+- If you see “provider not registered: Microsoft.App”, run:
+```bash
+
+az provider register -n Microsoft.App --wait
+```
