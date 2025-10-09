@@ -12,9 +12,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      
       - name: Run tfsec
         uses: aquasecurity/tfsec-action@v1.0.3
         with:
           working_directory: infra
-          
+          # Set this to true at first so you can see findings without failing the build.
+          soft_fail: true
