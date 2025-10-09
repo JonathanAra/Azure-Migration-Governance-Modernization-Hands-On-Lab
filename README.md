@@ -20,6 +20,16 @@ IaC: Terraform (azurerm v4)
 Practices: IaC, governance, right-sizing, cost optimization, DevOps-friendly guardrails
 
 
+## Architecture
+flowchart LR
+  A[On-prem inventory (CSV)] -->|Upload| B[Azure Migrate Project]
+  B --> C[Assessment: right-size & cost]
+  C --> D[Landing Zone (Terraform): RGs, VNet/NSG]
+  D --> E[Governance (Terraform): Policy + RBAC]
+  E --> F[Ops Guardrails: Activity Log Alerts, Budgets]
+  D --> G[Modernization: Azure Container Apps (consumption, scale-to-zero)]
+
+
 ## Repo Structure
 infra/
   provider.tf
@@ -44,9 +54,14 @@ screenshots/
 ### BASH
 
 ```bash
+#1) Clone
 git clone https://github.com/<your-username>/<your-azure-repo>.git
 cd <your-azure-repo>/infra
+
+#2 Confirm Subscription
 az account set --subscription <your-subscription-id>
+
+#3 Set Variables
 cat > terraform.tfvars <<'EOF'
 prefix               = "jmig01"
 location             = "eastus"
@@ -55,8 +70,12 @@ enable_budget        = false
 deploy_container_app = true
 container_image      = "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest"
 EOF
+
+#4 Deploy
 terraform init -upgrade
 terraform apply -auto-approve
+
+#5 Get the app URL
 PREFIX=jmig01
 FQDN=$(az containerapp show -g ${PREFIX}-rg-workload -n ${PREFIX}-ca-legacy-api --query properties.configuration.ingress.fqdn -o tsv)
 echo "https://$FQDN"
@@ -65,10 +84,16 @@ echo "https://$FQDN"
 
 ---
 
-### Quick sanity tips
+### Quick tips
 - In **Bash**, set `PREFIX=jmig01` (don’t type `${var.prefix}` that’s Terraform syntax, not shell).  
 - If you see “provider not registered: Microsoft.App”, run:
 ```bash
 
 az provider register -n Microsoft.App --wait
 ```
+
+## For Tear Down
+
+``` Bash
+# Destroy Everything
+terraform destroy -auto-approve
