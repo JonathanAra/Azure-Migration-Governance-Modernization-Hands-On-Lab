@@ -97,3 +97,18 @@ az provider register -n Microsoft.App --wait
 ``` Bash
 # Destroy Everything
 terraform destroy -auto-approve
+```
+## Results & Lessons
+
+- Produced concrete right-size VM recommendations and monthly cost estimates with Azure Migrate
+
+- Proved repeatable governance as code with Terraform (Policy, RBAC, alerts)
+
+- Demonstrated a path from IaaS to Azure Container Apps with minimal resources and cold-start trade-offs
+
+Keeping demos cost-safe makes iteration fast and realistic.
+
+
+License
+
+This repo is for educational/demo purposes. Use at your own risk.
