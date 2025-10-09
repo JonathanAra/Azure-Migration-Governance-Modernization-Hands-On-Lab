@@ -2,9 +2,6 @@
 
 [![Open in Azure Cloud Shell](https://img.shields.io/badge/Azure%20Cloud%20Shell-Open-blue?logo=microsoftazure)](https://shell.azure.com/bash)
 
-![terraform-ci](https://github.com/Jonathanara/Azure-Migration-Governance-Modernization-Hands-On-Lab-/actions/workflows/terraform-ci.yml/badge.svg)
-![tfsec](https://github.com/Jonathanara/Azure-Migration-Governance-Modernization-Hands-On-Lab-/actions/workflows/tfsec.yml/badge.svg)
-
 
 ## Goal: 
 Simulate a VMware→Azure migration, prove post-migration operations & cost controls, and modernize one workload—all as code.
