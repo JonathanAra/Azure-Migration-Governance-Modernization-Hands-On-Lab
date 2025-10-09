@@ -1,0 +1,14 @@
+# Copy this file to terraform.tfvars and fill in real values locally (do not commit your tfvars)
+prefix               = "demo01"
+location             = "eastus"
+alert_email          = "you@example.com"
+enable_budget        = false
+
+# Phase 5 (Container Apps)
+deploy_container_app = true
+container_image      = "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest"
+
+# Optional: governance & RBAC
+allowed_vm_skus      = ["Standard_B1s", "Standard_B2s"]
+allowed_locations    = ["eastus"]
+ops_reader_object_id = "" # leave blank or use a test AAD objectId (do not commit real user IDs)
