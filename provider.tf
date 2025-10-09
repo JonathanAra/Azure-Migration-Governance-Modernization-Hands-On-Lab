@@ -12,6 +12,4 @@ provider "azurerm" {
   features {}
   subscription_id = var.subscription_id
   tenant_id       = var.tenant_id
-  # If you previously hit provider registration hangs, you can also add:
-  # resource_provider_registrations = "none"
 }
