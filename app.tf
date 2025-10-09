@@ -1,10 +1,8 @@
-# ---- Look up existing Log Analytics workspace ----
 data "azurerm_log_analytics_workspace" "law" {
   name                = "${var.prefix}-law"
   resource_group_name = azurerm_resource_group.platform.name
 }
 
-# ---- Container Apps Environment (v4: single workspace field, no logs{} block) ----
 resource "azurerm_container_app_environment" "env" {
   count                      = var.deploy_container_app ? 1 : 0
   name                       = "${var.prefix}-cae"
@@ -14,7 +12,7 @@ resource "azurerm_container_app_environment" "env" {
   tags                       = { env = "lab" }
 }
 
-# ---- Container App (public ingress, tiny footprint, autoscale 0..1) ----
+# Container App, public ingress
 resource "azurerm_container_app" "legacy_api" {
   count                        = var.deploy_container_app ? 1 : 0
   name                         = "${var.prefix}-ca-legacy-api"
