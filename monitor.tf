@@ -1,5 +1,4 @@
-# ---------- Budgets (RFC3339 dates) ----------
-locals {
+#  Budgets 
   now_utc      = timestamp()
   budget_start = "${formatdate("YYYY-MM", local.now_utc)}-01T00:00:00Z"
   budget_end   = "${formatdate("YYYY", local.now_utc)}-12-31T00:00:00Z"
