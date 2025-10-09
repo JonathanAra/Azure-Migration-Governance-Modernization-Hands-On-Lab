@@ -1,6 +1,4 @@
-# ----------------------------
-# Custom Policy: Require tag + value
-# ----------------------------
+
 resource "azurerm_policy_definition" "require_tag_and_value" {
   name         = "${var.prefix}-poldef-require-tag-and-value"
   display_name = "Require a specific tag and value"
@@ -56,9 +54,8 @@ resource "azurerm_resource_group_policy_assignment" "require_tags" {
 }
 
 
-# ----------------------------
 # Custom Policy: NICs must NOT have a Public IP
-# ----------------------------
+
 resource "azurerm_policy_definition" "nic_no_public_ip" {
   name         = "${var.prefix}-poldef-nic-no-public-ip"
   display_name = "Network interfaces should not have public IPs (custom)"
