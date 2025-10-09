@@ -3,7 +3,7 @@ locals {
 }
 
 
-# ---------- Custom: Allowed Locations ----------
+# Custom: Allowed Locations 
 resource "azurerm_policy_definition" "allowed_locations" {
   name         = "${var.prefix}-poldef-allowed-locations"
   display_name = "Allowed locations (lab)"
@@ -34,7 +34,7 @@ resource "azurerm_policy_definition" "allowed_locations" {
   })
 }
 
-# ---------- Custom: Allowed VM SKUs ----------
+# Custom: Allowed VM SKUs 
 resource "azurerm_policy_definition" "allowed_vm_skus" {
   name         = "${var.prefix}-poldef-allowed-vm-skus"
   display_name = "Allowed VM SKUs (lab)"
@@ -70,10 +70,9 @@ resource "azurerm_policy_definition" "allowed_vm_skus" {
   })
 }
 
-# ---------- Policy Set (Initiative): Landing Zone Baseline ----------
+# Policy Set: Landing Zone Baseline
 # Reuses your existing custom policies:
-# - azurerm_policy_definition.require_tag_and_value
-# - azurerm_policy_definition.nic_no_public_ip
+
 resource "azurerm_policy_set_definition" "lz_baseline" {
   name         = "${var.prefix}-polset-lz-baseline"
   display_name = "Landing Zone Baseline (lab)"
@@ -117,8 +116,6 @@ resource "azurerm_policy_set_definition" "lz_baseline" {
   }
 }
 
-# ---------- Assignment (toggle: subscription vs RG) ----------
-
 
 resource "azurerm_subscription_policy_assignment" "lz_baseline_sub" {
   count                = var.enable_subscription_assignment ? 1 : 0
@@ -137,7 +134,7 @@ resource "azurerm_resource_group_policy_assignment" "lz_baseline_rg" {
   # Assigning at RG keeps perms simple if you can't assign at subscription
 }
 
-# ---------- Optional RBAC ----------
+# RBAC
 # Grant a user/group read-only on workload RG (and cost read on subscription) if you supply ops_reader_object_id
 data "azurerm_role_definition" "reader" {
   name  = "Reader"
