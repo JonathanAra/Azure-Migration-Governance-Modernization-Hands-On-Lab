@@ -1,7 +1,8 @@
-# Azure-Migration-Governance-Modernization-Hands-On-Lab
+# Azure Migration Governance Modernization Hands-On Lab
 
 [![Open in Azure Cloud Shell](https://img.shields.io/badge/Azure%20Cloud%20Shell-Open-blue?logo=microsoftazure)](https://shell.azure.com/bash)
 
+Topic - Azure, Terraform, cloud infrastructure, IAC, Azure-Migrate
 
 ## Goal: 
 Simulate a VMware→Azure migration, prove post-migration operations & cost controls, and modernize one workload—all as code.
